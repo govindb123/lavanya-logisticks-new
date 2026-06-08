@@ -40,19 +40,26 @@ export default function Contact() {
           {/* Info */}
           <div className="ct-info">
             {[
-              { icon: "📞", label: "Phone", value: "+91 9923175422", accent: "#f97316" },
-              { icon: "📧", label: "Email", value: "info@lavanyalogisticks.com", accent: "#3b82f6" },
-              { icon: "📍", label: "Office", value: "Bhiwandi 421308", accent: "#22c55e" },
-              { icon: "🕐", label: "Hours", value: "Mon–Sat: 8 AM – 8 PM", accent: "#a855f7" },
-            ].map((c) => (
-              <div key={c.label} className="ct-info-card">
-                <div className="ct-info-icon" style={{ background: `${c.accent}18`, border: `1px solid ${c.accent}33` }}>{c.icon}</div>
-                <div>
-                  <div className="ct-info-label" style={{ color: c.accent }}>{c.label}</div>
-                  <div className="ct-info-value">{c.value}</div>
-                </div>
-              </div>
-            ))}
+              { icon: "📞", label: "Phone", value: "+91 9923175422", accent: "#f97316", href: "tel:+919923175422" },
+              { icon: "📧", label: "Email", value: "info@lavanyalogisticks.com", accent: "#3b82f6", href: "mailto:info@lavanyalogisticks.com" },
+              { icon: "📍", label: "Office", value: "Bhiwandi 421308", accent: "#22c55e", href: "https://maps.google.com/?q=Bhiwandi+421308" },
+              { icon: "🕐", label: "Hours", value: "Mon–Sat: 8 AM – 8 PM", accent: "#a855f7", href: null },
+            ].map((c) => {
+              const Tag = c.href ? "a" : "div";
+              return (
+                <Tag
+                  key={c.label}
+                  className="ct-info-card"
+                  {...(c.href ? { href: c.href, target: c.href.startsWith("http") ? "_blank" : undefined, rel: c.href.startsWith("http") ? "noopener noreferrer" : undefined } : {})}
+                >
+                  <div className="ct-info-icon" style={{ background: `${c.accent}18`, border: `1px solid ${c.accent}33` }}>{c.icon}</div>
+                  <div>
+                    <div className="ct-info-label" style={{ color: c.accent }}>{c.label}</div>
+                    <div className="ct-info-value">{c.value}</div>
+                  </div>
+                </Tag>
+              );
+            })}
             <div className="ct-trust">
               {["✅ Free Quote", "⚡ 30-min Response", "🔒 Insured Cargo", "📍 Live Tracking"].map(t => (
                 <span key={t} className="ct-trust-chip">{t}</span>
@@ -111,7 +118,7 @@ export default function Contact() {
         .ct-sub { color: #fed7aa; max-width: 500px; margin: 0 auto; line-height: 1.75; font-size: 15px; }
         .ct-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; align-items: start; }
         .ct-info { display: flex; flex-direction: column; gap: 14px; }
-        .ct-info-card { display: flex; gap: 14px; align-items: flex-start; border-radius: 16px; padding: 16px; transition: transform 0.2s, box-shadow 0.2s; transform-style: preserve-3d; }
+        .ct-info-card { display: flex; gap: 14px; align-items: flex-start; border-radius: 16px; padding: 16px; transition: transform 0.2s, box-shadow 0.2s; transform-style: preserve-3d; text-decoration: none; cursor: pointer; }
         .ct-info-card:hover { transform: translateX(8px) perspective(600px) rotateY(-4deg); box-shadow: 0 12px 32px rgba(0,0,0,0.15); }
         .ct-info-card:nth-child(1) { background: linear-gradient(135deg,#fff7ed,#ffedd5); border: 1.5px solid #fed7aa; }
         .ct-info-card:nth-child(2) { background: linear-gradient(135deg,#eff6ff,#dbeafe); border: 1.5px solid #bfdbfe; }
