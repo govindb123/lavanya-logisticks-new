@@ -140,7 +140,7 @@ export default function Hero() {
               <div className="route-dot" />
             </div>
             <div className="card-actions">
-              <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="card-btn-primary">🚛 Book Now</a>
+              <a href="#contact" className="card-btn-primary">🚛 Book Now</a>
               <a href="#hero-info" className="card-btn-outline">Learn More ↓</a>
             </div>
           </div>
@@ -168,7 +168,7 @@ export default function Hero() {
           </p>
 
           <div className="heroinfo-btns">
-            <a href={WHATSAPP} target="_blank" rel="noopener noreferrer" className="btn-primary">🚛 Book a Delivery</a>
+            <a href="#contact" className="btn-primary">🚛 Book a Delivery</a>
             <a href="#services" className="btn-outline">Our Services →</a>
           </div>
 
